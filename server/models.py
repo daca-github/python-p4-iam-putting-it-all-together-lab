@@ -36,12 +36,12 @@ class User(db.Model, SerializerMixin):
 
 class Recipe(db.Model, SerializerMixin):
     __tablename__ = 'recipes'
-
+    
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String, nullable=False)
     instructions = db.Column(db.String)
     minutes_to_complete = db.Column(db.Integer)
-    user_id = db.Column(db.Integer, db.ForeignKey ('users.id'))
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
 
     __table_args__ = (
         CheckConstraint('length(instructions) >= 50', name='check_instructions_length'),
